@@ -32,7 +32,8 @@ public class Group {
 
     public void deleteStudent (Student student){
         for (int i=0; i<listStudents.length; i++){
-            if (listStudents[i].equals(student)){
+            // Vladik typarbko =) element v masive y teb9 tyt ==null nygno provir9t!!
+            if (listStudents[i] != null && listStudents[i].equals(student)){
                 listStudents[i]=null;
                 System.out.println(student+ " deleted from list");
             }
