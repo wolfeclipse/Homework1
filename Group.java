@@ -5,20 +5,23 @@ import java.util.Arrays;
 
 public class Group {
     private Student[] listStudents = new Student[10];
-    private boolean isEmpty;
+
+
     @Override
     public String toString() {
+     // Arrays.sort(listStudents );
+
         return "Students=" + Arrays.toString(listStudents) +
                 '}';
     }
 
     public void addStudent (Student student){
-           if (isEmpty=true) {
+
                for (int i = 0; i < listStudents.length; i++) {
                        if (listStudents[i] == null) {
                        listStudents[i] = student;
                        System.out.println(listStudents[i] + " ");
-                       isEmpty=true;
+
                        return;
                    }
                }
@@ -27,29 +30,28 @@ public class Group {
                } catch (GroupException e){
                    System.out.println(e.getMessage());
                }
-           }
+
     }
 
     public void deleteStudent (Student student){
         for (int i=0; i<listStudents.length; i++){
-            // Vladik typarbko =) element v masive y teb9 tyt ==null nygno provir9t!!
-            if (listStudents[i] != null && listStudents[i].equals(student)){
+            if (listStudents[i]!=null && listStudents[i].equals(student)){
                 listStudents[i]=null;
                 System.out.println(student+ " deleted from list");
             }
         }
     }
-//student.equals(listStudents[i])
-    public boolean findStudent (Student student){
+
+    public String findStudent (Student student){
         for (int i = 0; i < listStudents.length; i++) {
-            if (listStudents[i].equals(student)){
-                System.out.println("Student " + student + " found");
-                return true;
+            if (listStudents[i]!=null && listStudents[i].getSurname().equals(student.getSurname())){
+              //  System.out.println("Student " + student + " found");
+                return "Student " + student + " found";
             }
         }
-        System.out.println("Can't find "+ student);
-        return false;
+        return "Can't find " + student;
     }
+
 
 
 }
