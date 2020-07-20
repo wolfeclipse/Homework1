@@ -2,14 +2,16 @@ package homework2;
 
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Group {
     private Student[] listStudents = new Student[10];
 
 
+
     @Override
     public String toString() {
-     // Arrays.sort(listStudents );
+        Arrays.sort(listStudents, studentComparator);
 
         return "Students=" + Arrays.toString(listStudents) +
                 '}';
@@ -52,6 +54,39 @@ public class Group {
         return "Can't find " + student;
     }
 
+    Comparator<Student> studentComparator = new Comparator<Student>() {
+        @Override
+        public int compare(Student student1, Student student2) {
+            if (student1==null && student2==null){
+                return 0;
+            }
+            if (student1 == null) {
+                return -1;
+            }
+            if (student2==null){
+                return 1;
+            }
+            if (student1.getSurname()==null && student2.getSurname()==null){
+                return 0;
+        }
+            if (student1.getSurname() == null) {
+            return -1;
+        }
+            if (student2.getSurname()==null){
+            return 1;
+        }
+            return student1.getSurname().compareTo(student2.getSurname());
+        }
+    };
 
+
+//    Comparable<Student> sortStud = new Comparable<Student>() {
+//
+//        @Override
+//        public int compareTo(Student o) {
+//
+//            return 0;
+//        }
+//    }
 
 }
